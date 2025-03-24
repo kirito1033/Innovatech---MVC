@@ -4,10 +4,10 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class EstadoPqrsModel extends Model
+class ColorModel extends Model
 {
-    protected $table            = 'estado_pqrs';
-    protected $primaryKey       = 'id';
+    protected $table            = 'color';
+    protected $primaryKey       = 'id_color';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
@@ -20,5 +20,4 @@ class EstadoPqrsModel extends Model
     protected $useTimestamps = true;
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
-
 }
