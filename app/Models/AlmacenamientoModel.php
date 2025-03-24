@@ -4,18 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class EstadoPqrsModel extends Model
+class AlmacenamientoModel extends Model
 {
-    protected $table            = 'estado_pqrs';
+    protected $table            = 'almacenamiento';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nom'];
+    protected $allowedFields    = ['num', 'unidadestandar'];
 
     protected bool $allowEmptyInserts = false;
-
     // Dates
     protected $useTimestamps = true;
     protected $createdField  = 'created_at';
