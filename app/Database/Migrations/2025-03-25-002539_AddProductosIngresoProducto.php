@@ -27,6 +27,14 @@ class AddProductosIngresoProducto extends Migration
                 'unsigned'   => true,
                 'null'       => false,
             ],
+            'created_at' => [
+                'type' => 'TIMESTAMP',
+                'null' => true
+            ],
+            'updated_at' => [
+                'type' => 'TIMESTAMP',
+                'null' => true
+            ]
         ]);
 
         $this->forge->addPrimaryKey(['ProductosId_Producto', 'Ingreso_productoid_ingreso']);

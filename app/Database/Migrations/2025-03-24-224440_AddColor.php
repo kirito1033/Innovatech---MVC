@@ -20,6 +20,14 @@ class AddColor extends Migration
                 'constraint' => 25,
                 'null'       => false,
             ],
+            'created_at' => [
+                'type' => 'TIMESTAMP',
+                'null' => true
+            ],
+            'updated_at' => [
+                'type' => 'TIMESTAMP',
+                'null' => true
+            ]
         ]);
 
         $this->forge->addPrimaryKey('id_color');

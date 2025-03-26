@@ -48,6 +48,14 @@ class AddOfertas extends Migration
                 'constraint' => 10,
                 'unsigned'   => true,
                 'null'       => false
+            ],
+            'created_at' => [
+                'type' => 'TIMESTAMP',
+                'null' => true
+            ],
+            'updated_at' => [
+                'type' => 'TIMESTAMP',
+                'null' => true
             ]
         ]);
 
