@@ -25,6 +25,14 @@ class AddSistemaOperativo extends Migration
                 'constraint' => 25,
                 'null'       => false,
             ],
+            'created_at' => [
+                'type' => 'TIMESTAMP',
+                'null' => true
+            ],
+            'updated_at' => [
+                'type' => 'TIMESTAMP',
+                'null' => true
+            ]
         ]);
         
         $this->forge->addKey('id', true); // Clave primaria

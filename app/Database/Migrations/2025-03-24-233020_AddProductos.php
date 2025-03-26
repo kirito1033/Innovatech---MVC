@@ -104,6 +104,14 @@ class AddProductos extends Migration
                 'unsigned'   => true,
                 'null'       => true,
             ],
+            'created_at' => [
+                'type' => 'TIMESTAMP',
+                'null' => true
+            ],
+            'updated_at' => [
+                'type' => 'TIMESTAMP',
+                'null' => true
+            ]
         ]);
 
         $this->forge->addPrimaryKey('id');
