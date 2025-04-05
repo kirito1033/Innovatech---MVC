@@ -12,7 +12,7 @@ class ModelosModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['Ruta', 'Descripción'];
+    protected $allowedFields    = ['Ruta', 'Descripción', 'updated_at'];
 
     protected bool $allowEmptyInserts = false;
 
@@ -21,7 +21,5 @@ class ModelosModel extends Model
     protected $useTimestamps = true;
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
-
-
 
 }

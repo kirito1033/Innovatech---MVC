@@ -12,7 +12,7 @@ class GarantiaModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['numero_mes_año', 'mes_año'];
+    protected $allowedFields    = ['numero_mes_año', 'mes_año', 'updated_at'];
 
     protected bool $allowEmptyInserts = false;
 

@@ -13,7 +13,7 @@ class EnvioModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'direccion', 'fecha', 'estado_envio_id', 'usuario_id'
+        'direccion', 'fecha', 'estado_envio_id', 'usuario_id', 'updated_at'
     ];
 
 

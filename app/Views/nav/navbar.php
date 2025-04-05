@@ -1,31 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">LOGO</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportContent" aria-expanded="false" aria_label="Toggle navifation">
-            <span cass="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">User Status</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Roles</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">User</a>
-                </li>
-            </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
-    </div>
-</nav>
+<div class="sidebar">
+    <h4 class="text-center my-3">Dashboard</h4>
+    <a href="#"><i class="bi bi-house"></i> Home</a>
+    <a href="#"><i class="bi bi-people"></i> User Status</a>
+    <a href="#"><i class="bi bi-shield-lock"></i> Roles</a>
+    <a href="#"><i class="bi bi-person"></i> Profile</a>
+    <a href="#"><i class="bi bi-person-lines-fill"></i> User</a>
+
+    <hr class="my-2">
+    <h5 class="text-center mt-3">Management</h5>
+    <a href="#"><i class="bi bi-building"></i> Departments</a>
+    <a href="#"><i class="bi bi-card-list"></i> Reports</a>
+    <a href="#"><i class="bi bi-graph-up"></i> Analytics</a>
+    <a href="#"><i class="bi bi-calendar-check"></i> Tasks</a>
+
+    <hr class="my-2">
+    <h5 class="text-center mt-3">Settings</h5>
+    <a href="#"><i class="bi bi-gear"></i> General Settings</a>
+    <a href="#"><i class="bi bi-lock"></i> Security</a>
+    <a href="#"><i class="bi bi-bell"></i> Notifications</a>
+    <a href="#"><i class="bi bi-box-arrow-right"></i> Logout</a>
+</div>

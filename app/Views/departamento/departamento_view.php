@@ -24,7 +24,6 @@
       <?php require_once("../app/Views/departamento/table.php")?>
     </div>
 		<!--Footer-->
-    <?php require_once("../app/Views/footer/footer.php") ?>
 
     <div class="modal fade" id="my-modal" tabindex="-1" aria-labelledby="my-modalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -49,4 +48,5 @@
 
     <script src="../controllers/departamento/departamento.js"></script>
   </body>
+
 </html>

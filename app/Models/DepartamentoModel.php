@@ -12,7 +12,7 @@ class DepartamentoModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id', 'nom', 'updated_at'];
+    protected $allowedFields    = ['nom', 'updated_at'];
 
     protected bool $allowEmptyInserts = false;
 

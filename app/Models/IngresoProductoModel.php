@@ -12,7 +12,7 @@ class IngresoProductoModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['factura', 'UsuarioId_usuario2'];
+    protected $allowedFields    = ['factura', 'UsuarioId_usuario2', 'updated_at'];
 
     protected bool $allowEmptyInserts = false;
 

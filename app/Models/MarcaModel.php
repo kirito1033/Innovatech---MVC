@@ -12,7 +12,7 @@ class MarcaModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nom'];
+    protected $allowedFields    = ['nom', 'updated_at'];
 
     protected bool $allowEmptyInserts = false;
 

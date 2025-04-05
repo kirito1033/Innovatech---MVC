@@ -12,7 +12,7 @@ class ResolucionModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nom'];
+    protected $allowedFields    = ['nom','created_at' ];
 
     protected bool $allowEmptyInserts = false;
 

@@ -12,7 +12,7 @@ class TipoPqrsModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nom'];
+    protected $allowedFields    = ['nom', 'descripcion','updated_at'];
 
     protected bool $allowEmptyInserts = false;
 

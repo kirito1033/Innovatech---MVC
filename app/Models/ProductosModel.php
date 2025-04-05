@@ -29,7 +29,8 @@ class ProductosModel extends Model
         'id_almacenamiento',
         'id_ram',
         'id_sistema_operativo',
-        'id_resolucion'
+        'id_resolucion',
+        'updated_at'
     ];
 
     protected bool $allowEmptyInserts = false;

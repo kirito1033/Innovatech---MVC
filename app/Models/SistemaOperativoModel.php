@@ -12,7 +12,7 @@ class SistemaOperativoModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nom', 'version'];
+    protected $allowedFields    = ['nom', 'version', 'updated_at'];
 
     protected bool $allowEmptyInserts = false;
 
