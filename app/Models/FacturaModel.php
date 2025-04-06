@@ -14,7 +14,7 @@ class FacturaModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'fecha', 'valortl', 'metodopago', 'Estado_facturaId_Estado_factura', 'Pedidoid'
+        'fecha', 'valortl', 'metodopago', 'Estado_facturaId_Estado_factura', 'Pedidoid', 'updated_at'
     ];
 
 

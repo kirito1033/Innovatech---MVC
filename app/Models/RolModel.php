@@ -12,7 +12,7 @@ class RolModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nom', 'descripcion'];
+    protected $allowedFields    = ['nom', 'descripcion' ,'updated_at'];
 
     protected bool $allowEmptyInserts = false;
 

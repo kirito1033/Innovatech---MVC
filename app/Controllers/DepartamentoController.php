@@ -80,7 +80,7 @@ class DepartamentoController extends Controller
             $id = $this->request->getVar($this->primaryKey);
             $dataModel = [
                 "nom" => $this->request->getVar("nom"),
-                "update_at" => $today
+                "updated_at" => $today
             ];
             if ($this->DepartamentoModel->update($id, $dataModel)) {
                 $data["message"] = "success";
@@ -126,7 +126,7 @@ class DepartamentoController extends Controller
         $data = [
             "id" => $this->request->getVar("id"),
             "nom" => $this->request->getVar("nom"),
-            "update_at" => $this->request->getVar("update_at")
+            "updated_at" => $this->request->getVar("update_at")
         ];
         return $data;
     }

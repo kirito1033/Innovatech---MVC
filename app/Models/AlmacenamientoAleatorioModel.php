@@ -12,7 +12,7 @@ class AlmacenamientoAleatorioModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['num', 'unidadestandar'];
+    protected $allowedFields    = ['num', 'unidadestandar', 'updated_at'];
 
     protected bool $allowEmptyInserts = false;
     // Dates

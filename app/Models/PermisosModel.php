@@ -12,7 +12,7 @@ class PermisosModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nombre', 'descripción'];
+    protected $allowedFields    = ['nombre', 'descripción','updated_at'];
 
     protected bool $allowEmptyInserts = false;
 

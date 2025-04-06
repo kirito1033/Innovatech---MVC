@@ -12,7 +12,7 @@ class EstadoUsuarioModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['nombre', 'descripción'];
+    protected $allowedFields    = ['Nombre', 'Descripción','updated_at'];
 
     protected bool $allowEmptyInserts = false;
 

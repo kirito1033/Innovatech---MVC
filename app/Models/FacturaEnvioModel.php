@@ -12,7 +12,7 @@ class FacturaEnvioModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['FacturaId_Factura', 'EnvioId_Envio'];
+    protected $allowedFields    = ['FacturaId_Factura', 'EnvioId_Envio', ];
 
     protected bool $allowEmptyInserts = false;
 

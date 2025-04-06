@@ -14,7 +14,7 @@ class PqrsModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         'descripcion',  'comentario_respuesta', 
-        'tipo_pqrs_id', 'usuario_id', 'estado_pqrs_id'
+        'tipo_pqrs_id', 'usuario_id', 'estado_pqrs_id','updated_at'
     ];
 
 
