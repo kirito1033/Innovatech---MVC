@@ -51,7 +51,7 @@
         <label for="usuario">Usuario</label>
     </div>
     <div class="form-floating mb-3">
-        <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña">
+        <input type="text" class="form-control" id="password" name="password" placeholder="Contraseña">
         <label for="password">Contraseña</label>
     </div>
     <div class="form-floating mb-3">
@@ -81,4 +81,6 @@
         </select>
         <label for="estado_usuario_id">Estado</label>
     </div>
+    <button type="submit" class="btn btn-primary" id="btnSubmit">Send Data</button>
+  
 </form>

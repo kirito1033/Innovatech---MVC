@@ -9,6 +9,7 @@
         <th scope="col" class="p-3">Precio</th>
         <th scope="col" class="p-3">Stock</th>
         <th scope="col" class="p-3">Estado</th>
+        <th scope="col" class="p-3">img</th>
         <th scope="col" class="p-3">Acciones</th>
       </tr>
     </thead>
@@ -63,12 +64,21 @@
                     echo htmlspecialchars($nombreEstado, ENT_QUOTES, 'UTF-8');
                 ?>
             </td>
-
+            <td>
+            <?php if ($producto['imagen']): ?>
+                <img src="<?= base_url('uploads/' . $producto['imagen']) ?>" alt="Imagen" width="60">
+              <?php else: ?>
+                <span class="text-muted">Sin imagen</span>
+              <?php endif; ?>
+            </td>
             <td class="p-3">
               <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                 <button type="button" onclick="show(<?php echo $producto['id']; ?>)" class="btn btn-success btn-sm"><i class="bi bi-eye"></i> Ver</button>
                 <button type="button" onclick="edit(<?php echo $producto['id']; ?>)" class="btn btn-warning btn-sm"><i class="bi bi-pencil"></i> Editar</button>
                 <button type="button" onclick="delete_(<?php echo $producto['id']; ?>)" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Eliminar</button>
+                <button type="button" class="btn btn-info btn-sm" onclick="showImageModal(<?php echo $producto['id']; ?>)">
+                  <i class="bi bi-image"></i> Imagen
+                </button>
               </div>
             </td>
           </tr>

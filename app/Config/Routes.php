@@ -34,7 +34,7 @@ $routes->group('estadousuario', function($routes){
     $routes->post("update", "EstadoUsuarioController::update");
 });
 
-$routes->group('usuario', function($routes){
+$routes->group('usuario', ['filter' => 'sessionauth'], function($routes){
     $routes->get("/", "UsuarioController::index");
     $routes->get("show", "UsuarioController::index");
     $routes->get("edit/(:num)", "UsuarioController::singleUsuario/$1");
@@ -42,6 +42,7 @@ $routes->group('usuario', function($routes){
     $routes->post("add", "UsuarioController::create");
     $routes->post("update", "UsuarioController::update");
 });
+
 
 $routes->group('rol', function($routes){
     $routes->get("/", "RolController::index");
@@ -254,6 +255,14 @@ $routes->group('ingresoproducto', function($routes){
 
 });
 
+$routes->post('usuario/login', 'UsuarioController::login');
+$routes->get('usuario/login', function() {
+    return view('usuario/login');
+});
 
-
-
+$routes->group('', ['filter' => 'auth'], function($routes) {
+    $routes->get('usuario', 'UsuarioController::index');
+    $routes->get('home', 'HomeController::index');
+});
+$routes->get('register', 'UsuarioController::registerView');
+$routes->post('producto/updateImage', 'ProductoController::updateImage');

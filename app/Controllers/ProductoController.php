@@ -101,6 +101,7 @@ class ProductoController extends Controller
     // Método para obtener un solo producto
     public function singleProducto($id = null)
     {
+        
         if ($this->request->isAJAX()) {
             if ($data[$this->model] = $this->productosModel->where($this->primaryKey, $id)->first()) {
                 $data["message"] = "success";
@@ -116,6 +117,7 @@ class ProductoController extends Controller
             $data["response"] = ResponseInterface::HTTP_CONFLICT;
             $data["data"] = "";
         }
+     
         echo json_encode($data);
     }
 
@@ -150,6 +152,8 @@ class ProductoController extends Controller
     // Método delete
     public function delete($id = null)
     {
+      
+      
         try {
             if ($this->productosModel->where($this->primaryKey, $id)->delete($id)) {
                 $data["message"] = "success";
@@ -166,6 +170,7 @@ class ProductoController extends Controller
             $data["response"] = ResponseInterface::HTTP_CONFLICT;
             $data["data"] = "Error";
         }
+     
         echo json_encode($data);
     }
 
@@ -196,7 +201,52 @@ class ProductoController extends Controller
         return $data;
     }
     
-    
+    public function updateImage()
+    {
+
+    if ($this->request->isAJAX()) {
+
+      
+        $id = $this->request->getVar('id');
+
+        // Verificar si el producto existe
+        $producto = $this->productosModel->find($id);
+        if (!$producto) {
+            return $this->response->setJSON([
+                'message' => 'Producto no encontrado',
+                'response' => ResponseInterface::HTTP_NOT_FOUND
+            ]);
+        }
+
+        // Obtener imagen
+        $img = $this->request->getFile('imagen');
+
+        if ($img && $img->isValid() && !$img->hasMoved()) {
+            $newName = $img->getRandomName();
+            $img->move(ROOTPATH . 'public/uploads/', $newName);
+          
+            // Actualizar en la base de datos
+            $this->productosModel->update($id, ['imagen' => $newName]);
+
+            return $this->response->setJSON([
+                'message' => 'success',
+                'response' => ResponseInterface::HTTP_OK,
+                'csrf' => csrf_hash(),
+                'imagen' => $newName
+            ]);
+        } else {
+            return $this->response->setJSON([
+                'message' => 'Error al subir imagen',
+                'response' => ResponseInterface::HTTP_NO_CONTENT
+            ]);
+        }
+    }
+
+    return $this->response->setJSON([
+        'message' => 'Petición inválida',
+        'response' => ResponseInterface::HTTP_BAD_REQUEST
+    ]);
+}
 
   
 }

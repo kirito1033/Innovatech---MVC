@@ -42,52 +42,28 @@
         </div>
       </div>
     </div>
-    <!-- Modal para subir imagen -->
-<div id="uploadModal" class="modal" style="display:none;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Subir Imagen</h5>
-                <button type="button" class="close" onclick="closeUploadModal()">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form id="uploadImageForm">
-                    <input type="hidden" id="id_producto" name="id_producto">
-                    
-                    <div class="form-group">
-                        <label for="imagen">Seleccionar Imagen:</label>
-                        <input type="file" class="form-control" id="imagen" name="imagen" required>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary">Subir Imagen</button>
-                </form>
-            </div>
+<div class="modal fade" id="modalImagenProducto" tabindex="-1" aria-labelledby="imagenModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form id="formImagenProducto" enctype="multipart/form-data">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Actualizar Imagen del Producto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
-    </div>
-</div>
-
-<!-- Modal para subir imagen -->
-<div id="uploadModal" class="modal fade" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Subir Imagen</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="uploadImageForm" enctype="multipart/form-data">
-                    <input type="hidden" id="id_producto" name="id_producto">
-                    
-                    <div class="mb-3">
-                        <label for="imagen" class="form-label">Seleccionar Imagen:</label>
-                        <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*" required>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary">Subir Imagen</button>
-                </form>
-            </div>
+        <div class="modal-body">
+          <input type="hidden" name="id" id="productoIdImagen">
+          <div class="mb-3">
+            <label for="imagen" class="form-label">Selecciona una imagen</label>
+            <input class="form-control" type="file" name="imagen" id="imagenInput" accept="image/*" required>
+          </div>
         </div>
-    </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Subir Imagen</button>
+        </div>
+      </div>
+    </form>
+    
+  </div>
 </div>
 
     <?php require_once("../app/Views/assets/js/js.php") ?>
@@ -97,5 +73,39 @@
     </script>
     <script src="../controllers/producto/producto.js"></script>
   </body>
+<script>
+function showImageModal(id) {
+  document.getElementById('productoIdImagen').value = id;
+  document.getElementById('imagenInput').value = "";
+  const modal = new bootstrap.Modal(document.getElementById('modalImagenProducto'));
+  modal.show();
+}
 
+document.getElementById("formImagenProducto").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const form = document.getElementById("formImagenProducto");
+    const formData = new FormData(form);
+
+    fetch("<?= base_url('producto/updateImage') ?>", {
+        method: "POST",
+        body: formData,
+        headers: {
+            "X-Requested-With": "XMLHttpRequest"
+        }
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.message === "success") {
+            alert("Imagen actualizada correctamente.");
+            location.reload(); // opcional para ver el cambio
+        } else {
+            alert(data.message);
+        }
+    })
+    .catch(err => {
+        console.error("Error al subir imagen:", err);
+    });
+});
+
+</script>
 </html>
