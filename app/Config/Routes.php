@@ -6,6 +6,7 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
+$routes->get('/', 'Home::index');
 
 $routes->group('departamento', function($routes){
     $routes->get("/", "DepartamentoController::index");
@@ -266,3 +267,15 @@ $routes->group('', ['filter' => 'auth'], function($routes) {
 });
 $routes->get('register', 'UsuarioController::registerView');
 $routes->post('producto/updateImage', 'ProductoController::updateImage');
+
+$routes->get('producto/ver/(:num)', 'ProductoController::ver/$1');
+
+$routes->group('oferta', function($routes) {
+    $routes->get("/", "OfertasController::index");
+    $routes->get("show", "OfertasController::index");
+    $routes->get("edit/(:num)", "OfertasController::singleOferta/$1");
+    $routes->get("delete/(:num)", "OfertasController::delete/$1");
+    $routes->post("add", "OfertasController::create");
+    $routes->post("update", "OfertasController::update");
+    $routes->post('updateImage', 'OfertasController::updateImage');
+});

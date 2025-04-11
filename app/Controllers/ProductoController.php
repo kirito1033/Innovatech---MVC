@@ -248,7 +248,19 @@ class ProductoController extends Controller
     ]);
 }
 
-  
+public function ver($id = null)
+{
+    
+    $productoModel = new ProductosModel();
+    $producto = $productoModel->find($id);
+
+    if (!$producto) {
+        throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("Producto con ID $id no encontrado");
+    }
+
+    return view('producto/ver', ['producto' => $producto]);
+}
+
 }
 
    
