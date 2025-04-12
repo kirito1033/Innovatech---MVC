@@ -250,17 +250,23 @@ class ProductoController extends Controller
 
 public function ver($id = null)
 {
-    
     $productoModel = new ProductosModel();
-    $producto = $productoModel->find($id);
+    $categoriaModel = new CategoriaModel();
+    
+    $data['categorias'] = $categoriaModel->findAll();
+    $data['producto'] = $productoModel->getProductoConRelaciones($id);
 
-    if (!$producto) {
+    if (!$data['producto']) {
         throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("Producto con ID $id no encontrado");
     }
-
-    return view('producto/ver', ['producto' => $producto]);
+ 
+    return view('producto/ver', $data);
 }
-
+public function preguntar($id)
+{
+    $pregunta = $this->request->getPost('pregunta');
+    return redirect()->to("/producto/ver/$id")->with('message', 'Pregunta enviada');
+}
 }
 
    

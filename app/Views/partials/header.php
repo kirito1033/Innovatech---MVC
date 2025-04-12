@@ -9,7 +9,7 @@
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="../assets/css/home.css">
+  <link rel="stylesheet" href="/assets/css/home.css">
 </head>
 
 <body>
@@ -23,14 +23,14 @@
               <i class="bi bi-list logo-menu"></i>
             </button>
             <div class="logo-celular">
-              <img class="logo"src ="../assets/img/logo-celular.png" alt="">
+              <img class="logo"src ="/assets/img/logo-celular.png" alt="">
             </div>
             <div class="boton-buscar">
               <input class="input-buscar" type="search" placeholder="Buscar productos">
               <button type="button" class="buscar"><i class="bi bi-search"></i></button>
             </div>
             <div class="carrito-compras">
-              <a href="agregar-carro.html" class="buscar"><i class="bi bi-cart"></i></a>
+              <a href="#" data-bs-toggle="modal" data-bs-target="#modalEnDesarrollo" class="buscar"><i class="bi bi-cart"></i></a>
             </div>
             <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop"
               aria-labelledby="staticBackdropLabel">
@@ -64,16 +64,19 @@
           <a href="oferta.html"> <i class="bi bi-tags"></i>ofertas</a>
         </li>
         <li class="nav-item offcanvas__nav-ul-li">
-          <a href="pqrs.html"><i class="bi bi-info-circle icon"></i>Ayuda / PQR</a>
+        <a href="<?= base_url('pqrs/Cpqrs') ?>"><i class="bi bi-info-circle icon"></i>Ayuda / PQR</a>
         </li>
         <li>
 
         </li>
         <li class="nav-item offcanvas__nav-ul-li">
-          <a href="perfil.html"><i class="bi bi-person-circle"></i> Mi perfil</a></a>
+          <a href="#" data-bs-toggle="modal" data-bs-target="#modalEnDesarrollo">
+            <i class="bi bi-cone-striped"></i> Sección sin función
+          </a>
         </li>
+
         <li class="nav-item offcanvas__nav-ul-li">
-          <a href="../Pages/login.html"><i class="bi bi-box-arrow-left"></i>Cerrar sesión</a>
+        <a href="<?= base_url('/logout') ?>"><i class="bi bi-box-arrow-left"></i>Cerrar sesión</a>
         </li>
       </ul>
       </div>
@@ -82,35 +85,35 @@
       <div class="header-pc">
         <ul class="nav nav-pills header-pc__nav-ul ">
           <li class="nav-item header-pc__nav-ul-li">
-            <a class="header__pc-li-link" href="../Pages/index.html"><i class="bi bi-house"></i>Inicio</a>
+            <a class="header__pc-li-link" href="<?= base_url('/') ?>"><i class="bi bi-house"></i>Inicio</a>
           </li>
           <li class="nav-item header-pc__nav-ul-li">
-            <a class="header__pc-li-link" href="Notificaciones.html"> <i class="bi bi-bell"></i>Notificaciones</a>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#modalEnDesarrollo"> <i class="bi bi-bell"></i>Notificaciones</a>
           </li>
           <li class="nav-item dropdown header-pc__nav-ul-li">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
                     <i class="bi bi-dropbox"></i> Categorias</a>
                 <ul class="dropdown-menu">
                     <?php foreach ($categorias as $categoria): ?>
-                    <li><a class="dropdown-item" href="<?= base_url('categoria/' . $categoria['id']) ?>"><?= esc($categoria['nom']) ?></a></li>
+                    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalEnDesarrollo" href=" <?= base_url('categoria/' . $categoria['id']) ?> "><?= esc($categoria['nom']) ?></a></li>
                     <?php endforeach; ?>
                     <hr class="dropdown-divider">
             </ul>
          </li>
           <li class="nav-item header-pc__nav-ul-li">
-            <a class="header__pc-li-link" href="miscompras.html"> <i class="bi bi-bag"></i>Mis compras</a>
+          <a href="#" data-bs-toggle="modal" data-bs-target="#modalEnDesarrollo">  <i class="bi bi-bag"></i>Mis compras</a>
           </li>
           <li class="nav-item header-pc__nav-ul-li">
-            <a class="header__pc-li-link" href="ofertas.html"> <i class="bi bi-tags"></i>ofertas</a>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#modalEnDesarrollo"> <i class="bi bi-tags"></i>ofertas</a>
           </li>
           <li class="nav-item header-pc__nav-ul-li">
-            <a class="header__pc-li-link" href="pqrs.html"><i class="bi bi-info-circle icon"></i>Ayuda / PQR</a>
+          <a href="<?= base_url('pqrs/Cpqrs') ?>"><i class="bi bi-info-circle icon"></i>Ayuda / PQR</a>
+          </li>
+          <li class="nav-item offcanvas__nav-ul-li">
+            <a href="#" data-bs-toggle="modal" data-bs-target="#modalEnDesarrollo"><i class="bi bi-person-circle"></i> Mi perfil</a>
           </li>
           <li class="nav-item header-pc__nav-ul-li">
-            <a class="header__pc-li-link" href="perfil.html"><i class="bi bi-person-circle"></i> Mi perfil</a></a>
-          </li>
-          <li class="nav-item header-pc__nav-ul-li">
-            <a class="header__pc-li-link" href="../Pages/login.html"><i class="bi bi-box-arrow-left"></i>Cerrar sesión</a>
+          <a href="<?= base_url('/logout') ?>"><i class="bi bi-box-arrow-left"></i>Cerrar sesión</a>
           </li>
         </ul>
       </div>
@@ -119,6 +122,23 @@
     </nav>
   </header>
 
+    <div class="modal fade" id="modalEnDesarrollo" tabindex="-1" aria-labelledby="modalEnDesarrolloLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-warning text-dark">
+        <h5 class="modal-title" id="modalEnDesarrolloLabel">En desarrollo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body text-center">
+        <i class="bi bi-tools" style="font-size: 2rem;"></i>
+        <p class="mt-3">Esta sección está en desarrollo. ¡Muy pronto estará disponible!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- Bootstrap JS Bundle (al final del body) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   

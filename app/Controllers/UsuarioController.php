@@ -213,7 +213,7 @@ class UsuarioController extends Controller
                 'status' => 'success',
                 'message' => 'Autenticación exitosa',
                 'token' => $token,
-                'redirect' => $user['rol_id'] == 2 ? '/usuario' : '/home',
+                'redirect' => $user['rol_id'] == 2 ? '/usuario' : '/',
                 'user' => [
                     'id' => $user['id_usuario'],
                     'usuario' => $user['usuario'],
@@ -225,6 +225,23 @@ class UsuarioController extends Controller
             return redirect()->to($user['rol_id'] == 1 ? '/usuario' : '/home');
         }
     }
+    public function logout()
+    {
+        // Destruye toda la sesión
+        session()->destroy();
+
+        // Si es una petición AJAX, retorna JSON
+        if ($this->request->isAJAX()) {
+            return $this->response->setJSON([
+                'status' => 'success',
+                'message' => 'Sesión cerrada correctamente'
+            ]);
+        } else {
+            // Si no es AJAX, redirecciona al login
+            return redirect()->to('usuario/login')->with('message', 'Sesión cerrada');
+        }
+    }
+
     public function registerView()
     {
         $TipoDocumento = new TipoDocumentoModel();
@@ -277,6 +294,7 @@ class UsuarioController extends Controller
             'message' => 'No es una petición AJAX',
             'csrf' => csrf_hash()
         ]);
-    }    
+    }   
+  
     
 }

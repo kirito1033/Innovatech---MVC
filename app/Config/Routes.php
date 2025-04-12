@@ -183,7 +183,8 @@ $routes->group('pqrs', function($routes){
     $routes->get("delete/(:num)", "PqrsController::delete/$1");
     $routes->post("add", "PqrsController::create");
     $routes->post("update", "PqrsController::update");
-
+    $routes->get("Cpqrs", "PqrsController::PqrsCliente");
+    
 
 });
 
@@ -279,3 +280,5 @@ $routes->group('oferta', function($routes) {
     $routes->post("update", "OfertasController::update");
     $routes->post('updateImage', 'OfertasController::updateImage');
 });
+
+$routes->get('/logout', 'UsuarioController::logout');

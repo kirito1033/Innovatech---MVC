@@ -20,6 +20,6 @@ class Home extends BaseController
             ->where('estado', 1)
             ->findAll();
     
-        return view('home', $data);
+        return view('home/home', $data);
     }
 }
