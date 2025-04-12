@@ -35,7 +35,7 @@ $routes->group('estadousuario', function($routes){
     $routes->post("update", "EstadoUsuarioController::update");
 });
 
-$routes->group('usuario', ['filter' => 'sessionauth'], function($routes){
+$routes->group('usuario', function($routes){
     $routes->get("/", "UsuarioController::index");
     $routes->get("show", "UsuarioController::index");
     $routes->get("edit/(:num)", "UsuarioController::singleUsuario/$1");
@@ -282,3 +282,13 @@ $routes->group('oferta', function($routes) {
 });
 
 $routes->get('/logout', 'UsuarioController::logout');
+
+$routes->group('userapi', function($routes) {
+    $routes->get("/", "ApiUserController::index");
+    $routes->get("show", "ApiUserController::index");
+    $routes->get("edit/(:num)", "ApiUserController::singleUser/$1");
+    $routes->get("delete/(:num)", "ApiUserController::delete/$1");
+    $routes->post("add", "ApiUserController::create");
+    $routes->post("update", "ApiUserController::update");
+    $routes->post('updateImage', 'ApiUserController::updateImage');
+});

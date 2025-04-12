@@ -194,12 +194,12 @@
                     </select>
                 </div>
                 <div class="comprar">
-                    <a href="/comprar/<?= $producto['id'] ?>">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#modalEnDesarrollo">
                         <button type="button" class="btn btn-primary comprar-btn">Comprar ahora</button>
                     </a>
                 </div>
                 <div class="agregar-carrito">
-                    <a href="/carrito/agregar/<?= $producto['id'] ?>" class="btn btn-info carrito-btn">Agregar al carrito</a>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#modalEnDesarrollo" class="btn btn-info carrito-btn">Agregar al carrito</a>
                 </div>
                 <div class="devoluciones">
                     <i class="bi bi-skip-backward-circle"></i>
@@ -271,7 +271,7 @@
                 <form class="row g-3 form-preguntas" action="/producto/preguntar/<?= $producto['id'] ?>" method="POST">
                     <div class="col-10">
                         <input type="text" class="form-control" id="inputpregunta" name="pregunta" placeholder="Escribe tu pregunta..." required>
-                        <button type="submit" class="btn btn-primary mb-3">Preguntar</button>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalEnDesarrollo"><button type="submit" class="btn btn-primary mb-3">Preguntar</button></a> 
                     </div>
                 </form>
                 <p id="preguntas"></p>
@@ -329,6 +329,23 @@
     </main>
 <?php endif; ?>
 </main>
+<div class="modal fade" id="modalEnDesarrollo" tabindex="-1" aria-labelledby="modalEnDesarrolloLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-warning text-dark">
+        <h5 class="modal-title" id="modalEnDesarrolloLabel">En desarrollo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body text-center">
+      <i class="bi bi-tools" style="font-size: 2rem; color: black;"></i>
+      <p class="mt-3" style="color: black !important;">Esta sección está en desarrollo. ¡Muy pronto estará disponible!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- Bootstrap JS (opcional, solo si necesitas funcionalidades como dropdowns) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
@@ -340,6 +357,7 @@ function preguntar() {
     }
 }
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 <footer>
 <?php require_once("../app/Views/footer/footerApp.php")?>

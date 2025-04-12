@@ -7,7 +7,7 @@
 
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <!-- Estilos personalizados -->
     <style>
         :root {
@@ -104,8 +104,8 @@
             <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
                 <label class="form-check-label" for="exampleCheck1">
-                    Aceptas las <a class="login-link" href="/condiciones.html">Condiciones de uso</a> y el 
-                    <a class="login-link" href="/aviso.html">Aviso de privacidad</a>.
+                    Aceptas las <a href="#" data-bs-toggle="modal" data-bs-target="#modalEnDesarrollo">Condiciones de uso</a> y el 
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#modalEnDesarrollo">Aviso de privacidad</a>.
                 </label>
             </div>
 
@@ -114,7 +114,7 @@
             </div>
 
             <div class="login__recuperar">
-                <a class="login-link" href="/recuperar.html">¿Olvidaste tu contraseña?</a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#modalEnDesarrollo">¿Olvidaste tu contraseña?</a>
             </div>
 
             <div class="login__registrar">
@@ -156,4 +156,22 @@
         });
     </script>
 </body>
+<div class="modal fade" id="modalEnDesarrollo" tabindex="-1" aria-labelledby="modalEnDesarrolloLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-warning text-dark">
+        <h5 class="modal-title" id="modalEnDesarrolloLabel">En desarrollo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body text-center">
+      <i class="bi bi-tools" style="font-size: 2rem; color: black;"></i>
+      <p class="mt-3" style="color: black !important;">Esta sección está en desarrollo. ¡Muy pronto estará disponible!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 </html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

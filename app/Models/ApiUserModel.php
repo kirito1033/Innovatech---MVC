@@ -6,11 +6,11 @@ use CodeIgniter\Model;
 
 class ApiUserModel extends Model
 {
-    protected $table            = 'api_user';
-    protected $primaryKey       = 'api_user_id';
+    protected $table            = 'api_users';
+    protected $primaryKey       = 'id';
 
     protected $allowedFields    = [
-        'api_username',
+        'api_user',
         'api_password',
         'api_role',
         'api_status'
@@ -22,7 +22,7 @@ class ApiUserModel extends Model
     protected $returnType       = 'array';
 
     protected $validationRules = [
-        'api_username' => 'required|max_length[60]',
+        'api_user' => 'required|max_length[60]',
         'api_password' => 'required|max_length[255]',
         'api_role'     => 'required|in_list[Admin,Read-only]',
         'api_status'   => 'required|in_list[Active,Inactive]',

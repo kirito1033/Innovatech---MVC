@@ -267,13 +267,16 @@ public function ver($id = null)
 {
     $productoModel = new ProductosModel();
     $categoriaModel = new CategoriaModel();
+    $session = session();
     
+    $data['usuario'] = $session->get('usuario'); // O $data['session'] = $session->get();
     $data['categorias'] = $categoriaModel->findAll();
     $data['producto'] = $productoModel->getProductoConRelaciones($id);
 
     if (!$data['producto']) {
         throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("Producto con ID $id no encontrado");
     }
+
  
     return view('producto/ver', $data);
 }

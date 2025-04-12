@@ -19,6 +19,7 @@ class UsuarioController extends Controller
     private $data;
     private $model;
 
+    
     public function __construct()
     {
         $this->primaryKey = "id_usuario";
@@ -47,6 +48,7 @@ class UsuarioController extends Controller
 
     public function create()
     {
+        
         $isAjax = $this->request->isAJAX();
         $dataModel = $this->getDataModel();
     
@@ -62,9 +64,9 @@ class UsuarioController extends Controller
                 // Redirigir según el rol_id
                 $rolId = $dataModel['rol_id'];
     
-                if ($rolId == 1) {
+                if ($rolId == 3) {
                     return view('usuario/login');
-                } elseif ($rolId == 2) {
+                } elseif ($rolId == 1) {
                     return redirect()->to('/usuario')->with('success', 'Usuario creado exitosamente');
                 } else {
                     return redirect()->to('/')->with('success', 'Usuario creado con un rol no reconocido');
@@ -149,15 +151,16 @@ class UsuarioController extends Controller
 
     public function getDataModel()
     {
+        
         return [
             'primer_nombre' => $this->request->getVar('primer_nombre'),
-            'segundo_nombre' => $this->request->getVar('segundo_nombre'),
+            'segundo_nombre' => $this->request->getVar('segundo_nombre') ?: null,
             'primer_apellido' => $this->request->getVar('primer_apellido'),
-            'segundo_apellido' => $this->request->getVar('segundo_apellido'),
+            'segundo_apellido' => $this->request->getVar('segundo_apellido'?: null),
             'documento' => $this->request->getVar('documento'),
             'correo' => $this->request->getVar('correo'),
             'telefono1' => $this->request->getVar('telefono1'),
-            'telefono2' => $this->request->getVar('telefono2'),
+            'telefono2' => $this->request->getVar('telefono2')?: null,
             'direccion' => $this->request->getVar('direccion'),
             'usuario' => $this->request->getVar('usuario'),
             'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
@@ -213,7 +216,7 @@ class UsuarioController extends Controller
                 'status' => 'success',
                 'message' => 'Autenticación exitosa',
                 'token' => $token,
-                'redirect' => $user['rol_id'] == 2 ? '/usuario' : '/',
+                'redirect' => $user['rol_id'] == 1 ? '/usuario' : '/',
                 'user' => [
                     'id' => $user['id_usuario'],
                     'usuario' => $user['usuario'],

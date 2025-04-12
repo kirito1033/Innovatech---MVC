@@ -110,10 +110,29 @@
           <a href="<?= base_url('pqrs/Cpqrs') ?>"><i class="bi bi-info-circle icon"></i>Ayuda / PQR</a>
           </li>
           <li class="nav-item offcanvas__nav-ul-li">
-            <a href="#" data-bs-toggle="modal" data-bs-target="#modalEnDesarrollo"><i class="bi bi-person-circle"></i> Mi perfil</a>
+          <?php if (isset($_SESSION['usuario'])): ?>
+          <li class="nav-item offcanvas__nav-ul-li">
+            <a href="#" data-bs-toggle="modal" data-bs-target="#modalEnDesarrollo">
+              <i class="bi bi-person-circle"></i> Mi perfil
+            </a>
+          </li>
+          
+        <?php endif; ?>
           </li>
           <li class="nav-item header-pc__nav-ul-li">
-          <a href="<?= base_url('/logout') ?>"><i class="bi bi-box-arrow-left"></i>Cerrar sesión</a>
+          <?php if (isset($_SESSION['usuario'])): ?>
+          <li class="nav-item header-pc__nav-ul-li">
+            <a href="<?= base_url('/logout') ?>">
+              <i class="bi bi-box-arrow-left"></i> Cerrar sesión
+            </a>
+          </li>
+        <?php else: ?>
+          <li class="nav-item header-pc__nav-ul-li">
+            <a href="<?= base_url('/usuario/login') ?>">
+              <i class="bi bi-box-arrow-left"></i> Iniciar sesión
+            </a>
+          </li>
+        <?php endif; ?>
           </li>
         </ul>
       </div>

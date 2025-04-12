@@ -93,49 +93,54 @@
     <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
     <div class="sidebar" id="sidebar">
         <h4 class="text-center my-3">Dashboard</h4>
-        <a href="/"><i class="bi bi-house"></i> Home</a>
-        <a href="/usuario"><i class="bi bi-people"></i> Usuarios</a>
-        <a href="/rol"><i class="bi bi-shield-lock"></i> Roles</a>
-        <a href="/permisos"><i class="bi bi-key"></i> Permisos</a>
+                <a href="/"><i class="bi bi-house"></i> Home</a>
+                <a href="/usuario"><i class="bi bi-people"></i> Usuarios</a>
+                <a href="/rol"><i class="bi bi-shield-lock"></i> Roles</a>
+                <a href="/permisos"><i class="bi bi-key"></i> Permisos</a>
 
-        <hr class="my-2">
-        <h5 class="text-center mt-3">Gestión</h5>
-        <a href="/departamento"><i class="bi bi-building"></i> Departamentos</a>
-        <a href="/ciudad"><i class="bi bi-geo-alt"></i> Ciudades</a>
-        <a href="/estadousuario"><i class="bi bi-person-check"></i> Estado Usuarios</a>
-        <a href="/tipodocumento"><i class="bi bi-file-earmark-text"></i> Tipos de Documento</a>
-        <a href="/producto"><i class="bi bi-box"></i> Productos</a>
-        <a href="/marca"><i class="bi bi-tag"></i> Marcas</a>
-        <a href="/modelo"><i class="bi bi-boxes"></i> Modelos</a>
-        <a href="/estadoproducto"><i class="bi bi-check-square"></i> Estado Productos</a>
-        <a href="/color"><i class="bi bi-palette"></i> Colores</a>
-        <a href="/categoria"><i class="bi bi-list-ul"></i> Categorías</a>
-        <a href="/garantia"><i class="bi bi-shield-check"></i> Garantías</a>
-        <a href="/almacenamiento"><i class="bi bi-hdd"></i> Almacenamiento</a>
-        <a href="/almacenamientoaleatorio"><i class="bi bi-hdd-stack"></i> Almacenamiento Aleatorio</a>
-        <a href="/sistemaoperativo"><i class="bi bi-gear-wide-connected"></i> Sistemas Operativos</a>
-        <a href="/resolucion"><i class="bi bi-display"></i> Resoluciones</a>
-        <a href="/ingresoproducto"><i class="bi bi-box-arrow-in-down"></i> Ingreso Productos</a>
+                <hr class="my-2">
+                <h5 class="text-center mt-3">Gestión</h5>
+                <a href="/departamento"><i class="bi bi-building"></i> Departamentos</a>
+                <a href="/ciudad"><i class="bi bi-geo-alt"></i> Ciudades</a>
+                <a href="/estadousuario"><i class="bi bi-person-check"></i> Estado Usuarios</a>
+                <a href="/tipodocumento"><i class="bi bi-file-earmark-text"></i> Tipos de Documento</a>
+                <a href="/producto"><i class="bi bi-box"></i> Productos</a>
+                <a href="/marca"><i class="bi bi-tag"></i> Marcas</a>
+                <a href="/modelo"><i class="bi bi-boxes"></i> Modelos</a>
+                <a href="/estadoproducto"><i class="bi bi-check-square"></i> Estado Productos</a>
+                <a href="/color"><i class="bi bi-palette"></i> Colores</a>
+                <a href="/categoria"><i class="bi bi-list-ul"></i> Categorías</a>
+                <a href="/garantia"><i class="bi bi-shield-check"></i> Garantías</a>
+                <a href="/almacenamiento"><i class="bi bi-hdd"></i> Almacenamiento</a>
+                <a href="/almacenamientoaleatorio"><i class="bi bi-hdd-stack"></i> Almacenamiento Aleatorio</a>
+                <a href="/sistemaoperativo"><i class="bi bi-gear-wide-connected"></i> Sistemas Operativos</a>
+                <a href="/resolucion"><i class="bi bi-display"></i> Resoluciones</a>
+                <a href="/ingresoproducto"><i class="bi bi-box-arrow-in-down"></i> Ingreso Productos</a>
 
-        <hr class="my-2">
-        <h5 class="text-center mt-3">PQRS</h5>
-        <a href="/tipopqrs"><i class="bi bi-question-circle"></i> Tipos PQRS</a>
-        <a href="/estadopqrs"><i class="bi bi-info-circle"></i> Estado PQRS</a>
-        <a href="/pqrs"><i class="bi bi-chat-dots"></i> PQRS</a>
+                <hr class="my-2">
+                <h5 class="text-center mt-3">PQRS</h5>
+                <a href="/tipopqrs"><i class="bi bi-question-circle"></i> Tipos PQRS</a>
+                <a href="/estadopqrs"><i class="bi bi-info-circle"></i> Estado PQRS</a>
+                <a href="/pqrs"><i class="bi bi-chat-dots"></i> PQRS</a>
 
-        <hr class="my-2">
-        <h5 class="text-center mt-3">Facturación y Envíos</h5>
-        <a href="/estadoenvio"><i class="bi bi-truck"></i> Estado Envíos</a>
-        <a href="/envio"><i class="bi bi-box-seam"></i> Envíos</a>
-        <a href="/estadofactura"><i class="bi bi-receipt"></i> Estado Facturas</a>
-        <a href="/factura"><i class="bi bi-file-earmark-ruled"></i> Facturas</a>
+                <hr class="my-2">
+                <h5 class="text-center mt-3">Facturación y Envíos</h5>
+                <a href="/estadoenvio"><i class="bi bi-truck"></i> Estado Envíos</a>
+                <a href="/envio"><i class="bi bi-box-seam"></i> Envíos</a>
+                <a href="/estadofactura"><i class="bi bi-receipt"></i> Estado Facturas</a>
+                <a href="/factura"><i class="bi bi-file-earmark-ruled"></i> Facturas</a>
 
-        <hr class="my-2">
-        <h5 class="text-center mt-3">Configuración</h5>
-        <a href="/settings"><i class="bi bi-gear"></i> Configuración General</a>
-        <a href="/security"><i class="bi bi-lock"></i> Seguridad</a>
-        <a href="/notifications"><i class="bi bi-bell"></i> Notificaciones</a>
-        <a href="/logout"><i class="bi bi-box-arrow-right"></i> Cerrar Sesión</a>
+                <hr class="my-2">
+                <h5 class="text-center mt-3">Módulos</h5>
+                <a href="/userapi"><i class="bi bi-plug"></i> Usuarios API</a>
+                <a href="/oferta"><i class="bi bi-megaphone"></i> Ofertas</a>
+
+                <hr class="my-2">
+                <h5 class="text-center mt-3">Configuración</h5>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#modalEnDesarrollo"><i class="bi bi-gear"></i> Configuración General</a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#modalEnDesarrollo"><i class="bi bi-lock"></i> Seguridad</a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#modalEnDesarrollo"><i class="bi bi-bell"></i> Notificaciones</a>
+                <a href="/logout"><i class="bi bi-box-arrow-right"></i> Cerrar Sesión</a>
     </div>
 
     <div class="main-content">
@@ -147,6 +152,23 @@
             document.getElementById('sidebar').classList.toggle('active');
         }
     </script>
+     <div class="modal fade" id="modalEnDesarrollo" tabindex="-1" aria-labelledby="modalEnDesarrolloLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-warning text-dark">
+        <h5 class="modal-title" id="modalEnDesarrolloLabel">En desarrollo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body text-center">
+        <i class="bi bi-tools" style="font-size: 2rem;"></i>
+        <p class="mt-3">Esta sección está en desarrollo. ¡Muy pronto estará disponible!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
 

@@ -241,8 +241,8 @@
             </div>
         </div>
 
-        <input type="hidden" id="rol_id" name="rol_id" value="1">
-        <input type="hidden" id="estado_usuario_id" name="estado_usuario_id" value="2">
+        <input type="hidden" id="rol_id" name="rol_id" value="3">
+        <input type="hidden" id="estado_usuario_id" name="estado_usuario_id" value="1">
 
         <button type="submit" id="boton1">Registrar</button>
         <a href="<?= base_url('/usuario/login') ?>" id="boton-regresar">Regresar</a>
