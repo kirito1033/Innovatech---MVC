@@ -9,6 +9,8 @@ use CodeIgniter\Controller;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\TipoDocumentoModel;
 use App\Models\CiudadModel;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 
 class UsuarioController extends Controller
 {
@@ -45,24 +47,40 @@ class UsuarioController extends Controller
 
     public function create()
     {
-        if ($this->request->isAJAX()) {
-            $dataModel = $this->getDataModel();
-            if ($this->UsuarioModel->insert($dataModel)) {
-                $data['message'] = 'success';
-                $data['response'] = ResponseInterface::HTTP_OK;
-                $data['data'] = $dataModel;
-                $data['csrf'] = csrf_hash();
+        $isAjax = $this->request->isAJAX();
+        $dataModel = $this->getDataModel();
+    
+        if ($this->UsuarioModel->insert($dataModel)) {
+            if ($isAjax) {
+                return $this->response->setJSON([
+                    'message' => 'success',
+                    'response' => ResponseInterface::HTTP_OK,
+                    'data' => $dataModel,
+                    'csrf' => csrf_hash()
+                ]);
             } else {
-                $data['message'] = 'Error al crear usuario';
-                $data['response'] = ResponseInterface::HTTP_NO_CONTENT;
-                $data['data'] = '';
+                // Redirigir según el rol_id
+                $rolId = $dataModel['rol_id'];
+    
+                if ($rolId == 1) {
+                    return view('usuario/login');
+                } elseif ($rolId == 2) {
+                    return redirect()->to('/usuario')->with('success', 'Usuario creado exitosamente');
+                } else {
+                    return redirect()->to('/')->with('success', 'Usuario creado con un rol no reconocido');
+                }
             }
         } else {
-            $data['message'] = 'Error Ajax';
-            $data['response'] = ResponseInterface::HTTP_CONFLICT;
-            $data['data'] = '';
+            if ($isAjax) {
+                return $this->response->setJSON([
+                    'message' => 'Error al crear usuario',
+                    'response' => ResponseInterface::HTTP_NO_CONTENT,
+                    'data' => ''
+                ]);
+            } else {
+                return redirect()->back()->with('error', 'Error al crear usuario')->withInput();
+            }
         }
-        echo json_encode($data);
     }
 
     public function singleUsuario($id = null)
@@ -150,4 +168,133 @@ class UsuarioController extends Controller
             'updated_at' => date("Y-m-d H:i:s")
         ];
     }
+        public function login()
+    {
+        $usuario = $this->request->getVar('usuario');
+        $password = $this->request->getVar('password');
+
+        $user = $this->UsuarioModel->where('usuario', $usuario)->first();
+
+        if (!$user || !password_verify($password, $user['password'])) {
+            if ($this->request->isAJAX()) {
+                return $this->response->setJSON([
+                    'status' => 'error',
+                    'message' => 'Usuario o contraseña incorrectos'
+                ])->setStatusCode(401);
+            } else {
+                return redirect()->back()->with('error', 'Usuario o contraseña incorrectos');
+            }
+        }
+
+        $key = getenv('JWT_SECRET') ?? 'clave_secreta_demo';
+        $issuedAt = time();
+        $expirationTime = $issuedAt + 3600;
+
+        $payload = [
+            'iat' => $issuedAt,
+            'exp' => $expirationTime,
+            'uid' => $user['id_usuario'],
+            'usuario' => $user['usuario'],
+            'rol_id' => $user['rol_id']
+        ];
+
+        $token = JWT::encode($payload, $key, 'HS256');
+
+        session()->set([
+            'token' => $token,
+            'usuario' => $user['usuario'],
+            'rol' => $user['rol_id'],
+            'id_usuario' => $user['id_usuario']
+        ]);
+
+        if ($this->request->isAJAX()) {
+            // Retorna JSON si es una petición AJAX
+            return $this->response->setJSON([
+                'status' => 'success',
+                'message' => 'Autenticación exitosa',
+                'token' => $token,
+                'redirect' => $user['rol_id'] == 2 ? '/usuario' : '/',
+                'user' => [
+                    'id' => $user['id_usuario'],
+                    'usuario' => $user['usuario'],
+                    'rol' => $user['rol_id']
+                ]
+            ]);
+        } else {
+            // Redirección si viene desde formulario normal
+            return redirect()->to($user['rol_id'] == 1 ? '/usuario' : '/home');
+        }
+    }
+    public function logout()
+    {
+        // Destruye toda la sesión
+        session()->destroy();
+
+        // Si es una petición AJAX, retorna JSON
+        if ($this->request->isAJAX()) {
+            return $this->response->setJSON([
+                'status' => 'success',
+                'message' => 'Sesión cerrada correctamente'
+            ]);
+        } else {
+            // Si no es AJAX, redirecciona al login
+            return redirect()->to('usuario/login')->with('message', 'Sesión cerrada');
+        }
+    }
+
+    public function registerView()
+    {
+        $TipoDocumento = new TipoDocumentoModel();
+        $Ciudad  = new CiudadModel();
+        $Rol = new RolModel();
+        $EstadoUsuario = new EstadoUsuarioModel();
+        $this->data['Rol'] = $Rol->findAll();
+        $this->data['EstadoUsuario'] = $EstadoUsuario->findAll();
+        $this->data['TipoDocumento'] = $TipoDocumento->findAll();
+        $this->data['Ciudad'] = $Ciudad->findAll();
+
+         return view('usuario/register', $this->data);
+    }
+    public function updateImage()
+    {
+        if ($this->request->isAJAX()) {
+            $id = $this->request->getVar('id');
+            $img = $this->request->getFile('imagen');
+    
+            if ($img && $img->isValid() && !$img->hasMoved()) {
+                $newName = $img->getRandomName();
+                $img->move(ROOTPATH . 'public/uploads/', $newName);
+    
+                $data = [
+                    'imagen' => $newName,
+                    'updated_at' => date("Y-m-d H:i:s")
+                ];
+    
+                if ($this->productosModel->update($id, $data)) {
+                    return $this->response->setJSON([
+                        'message' => 'success',
+                        'image' => $newName,
+                        'csrf' => csrf_hash()
+                    ]);
+                } else {
+                    return $this->response->setJSON([
+                        'message' => 'Error al actualizar imagen',
+                        'csrf' => csrf_hash()
+                    ]);
+                }
+            } else {
+                return $this->response->setJSON([
+                    'message' => 'Imagen inválida',
+                    'csrf' => csrf_hash()
+                ]);
+            }
+        }
+    
+        return $this->response->setJSON([
+            'message' => 'No es una petición AJAX',
+            'csrf' => csrf_hash()
+        ]);
+    }   
+  
+    
 }
