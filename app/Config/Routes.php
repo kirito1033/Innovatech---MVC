@@ -35,7 +35,7 @@ $routes->group('estadousuario', function($routes){
     $routes->post("update", "EstadoUsuarioController::update");
 });
 
-$routes->group('usuario', function($routes){
+$routes->group('usuario',['filter' => 'sessionauth'], function($routes){
     $routes->get("/", "UsuarioController::index");
     $routes->get("show", "UsuarioController::index");
     $routes->get("edit/(:num)", "UsuarioController::singleUsuario/$1");
