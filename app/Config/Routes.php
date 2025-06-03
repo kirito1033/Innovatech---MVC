@@ -271,6 +271,9 @@ $routes->post('producto/updateImage', 'ProductoController::updateImage');
 
 $routes->get('producto/ver/(:num)', 'ProductoController::ver/$1');
 
+$routes->get('categoria/(:num)', 'ProductoController::listarProductos/$1');
+
+
 $routes->group('oferta', function($routes) {
     $routes->get("/", "OfertasController::index");
     $routes->get("show", "OfertasController::index");

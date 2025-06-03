@@ -90,16 +90,21 @@
           <li class="nav-item header-pc__nav-ul-li">
             <a href="#" data-bs-toggle="modal" data-bs-target="#modalEnDesarrollo"> <i class="bi bi-bell"></i>Notificaciones</a>
           </li>
-          <li class="nav-item dropdown header-pc__nav-ul-li">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
-                    <i class="bi bi-dropbox"></i> Categorias</a>
-                <ul class="dropdown-menu">
-                    <?php foreach ($categorias as $categoria): ?>
-                    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalEnDesarrollo" href=" <?= base_url('categoria/' . $categoria['id']) ?> "><?= esc($categoria['nom']) ?></a></li>
-                    <?php endforeach; ?>
-                    <hr class="dropdown-divider">
-            </ul>
-         </li>
+         <li class="nav-item dropdown header-pc__nav-ul-li">
+    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+        <i class="bi bi-dropbox"></i> Categorías
+    </a>
+        <ul class="dropdown-menu">
+            <?php foreach ($categorias as $categoria): ?>
+                <li>
+                    <a class="dropdown-item" href="<?= base_url('categoria/' . $categoria['id']) ?>">
+                        <?= esc($categoria['nom']) ?>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+            <hr class="dropdown-divider">
+        </ul>
+    </li>
           <li class="nav-item header-pc__nav-ul-li">
           <a href="#" data-bs-toggle="modal" data-bs-target="#modalEnDesarrollo">  <i class="bi bi-bag"></i>Mis compras</a>
           </li>
@@ -141,23 +146,6 @@
     </nav>
   </header>
 
-    <div class="modal fade" id="modalEnDesarrollo" tabindex="-1" aria-labelledby="modalEnDesarrolloLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header bg-warning text-dark">
-        <h5 class="modal-title" id="modalEnDesarrolloLabel">En desarrollo</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
-      <div class="modal-body text-center">
-        <i class="bi bi-tools" style="font-size: 2rem;"></i>
-        <p class="mt-3">Esta sección está en desarrollo. ¡Muy pronto estará disponible!</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
 <!-- Bootstrap JS Bundle (al final del body) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   

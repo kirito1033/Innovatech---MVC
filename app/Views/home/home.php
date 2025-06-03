@@ -33,7 +33,7 @@
             <?php foreach ($ofertas as $oferta): ?>
                 <?php if (!empty($oferta['imagen'])): ?>
                     <div class="carousel-item <?= $primero ? 'active' : '' ?>">
-                        <a href="<?= base_url('producto/' . $oferta['productos_id']) ?>">
+                        <a href="<?= base_url('producto/ver/' . $oferta['productos_id']) ?>">
                             <img src="<?= base_url('uploads/' . $oferta['imagen']) ?>" class="d-block w-100 img-fluid" alt="Imagen oferta">
                         </a>
                     </div>

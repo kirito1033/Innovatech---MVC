@@ -363,13 +363,12 @@ ul{
 /* Para que las imágenes tengan mismo tamaño y se recorten */
 .producto-img {
     width: 100% !important;
-    height: 220px !important;
+    height: 49% !important;
     object-fit: cover !important;
     border-radius: 10px 10px 0 0 !important;
 }
 
-/* main productos fin */
-/* main medias productos */
+
 
 /* footer */
 .ul-icon{
