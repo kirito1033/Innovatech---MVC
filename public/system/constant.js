@@ -46,3 +46,7 @@ const URI_ENVIO = "/envio/"
 const URI_FACTURA = "/factura/"
 
 const URI_INGRESOPRODUCTO = "/ingresoproducto/"
+
+const URI_OFERTA = "/oferta/"
+
+const URI_USERAPI = "/userapi/"

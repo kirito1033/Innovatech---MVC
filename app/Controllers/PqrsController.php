@@ -6,6 +6,7 @@ use App\Models\TipoPqrsModel;
 use App\Models\EstadoPqrsModel;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\ResponseInterface;
+use App\Models\CategoriaModel;
 
 class PqrsController extends Controller
 {
@@ -44,6 +45,19 @@ class PqrsController extends Controller
     {
         if ($this->request->isAJAX()) {
             $dataModel = $this->getDataModel();
+
+            // Obtener el ID del usuario desde la sesión
+            $session = session();
+            $idUsuario = $session->get('id_usuario');
+
+            // Asegurar que comentario_respuesta sea opcional
+            if (empty($dataModel['comentario_respuesta'])) {
+                $dataModel['comentario_respuesta'] = null;
+            }
+
+            // Asignar el ID del usuario logueado
+            $dataModel['usuario_id'] = $idUsuario;
+
             if ($this->PqrsModel->insert($dataModel)) {
                 $data["message"] = "success";
                 $data["response"] = ResponseInterface::HTTP_OK;
@@ -59,6 +73,7 @@ class PqrsController extends Controller
             $data["response"] = ResponseInterface::HTTP_CONFLICT;
             $data["data"] = "";
         }
+
         echo json_encode($data);
     }
 
@@ -144,4 +159,29 @@ class PqrsController extends Controller
         ];
         return $data;
     }
+    public function PqrsCliente()
+    {
+    $session = session();
+    $idUsuario = $session->get('id_usuario'); // Asegúrate que esta clave existe en tu sesión
+
+    $EstadoPqrs = new EstadoPqrsModel();
+    $TipoPqrs  = new TipoPqrsModel();
+    $Usuario = new UsuarioModel();
+    $categoriaModel = new CategoriaModel();
+
+    $this->data['categorias'] = $categoriaModel->findAll();
+    $this->data['EstadoPqrs'] = $EstadoPqrs->findAll();
+    $this->data['TipoPqrs'] = $TipoPqrs->findAll();
+    $this->data['Usuario'] = $Usuario->findAll();
+    $this->data["title"] = "PQRS";
+
+    // 🔍 Filtramos solo las PQRS del usuario actual
+    $this->data[$this->model] = $this->PqrsModel
+        ->where('usuario_id', $idUsuario)
+        ->orderBy($this->primaryKey, 'ASC')
+        ->findAll();
+
+    return view("pqrs/pqrs_form_view", $this->data);
+    }
+
 }

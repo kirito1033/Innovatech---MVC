@@ -27,9 +27,9 @@ class Database extends Config
     public array $default = [
         'DSN'          => '',
         'hostname'     => 'localhost',
-        'username'     => 'root',
-        'password'     => '',
-        'database'     => 'innovatechDB',
+        'username'     => 'u847177988_novatech',
+        'password'     => 'Novatech2025*',
+        'database'     => 'u847177988_novatech',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
         'pConnect'     => false,

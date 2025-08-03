@@ -6,6 +6,7 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
+$routes->get('/', 'Home::index');
 
 $routes->group('departamento', function($routes){
     $routes->get("/", "DepartamentoController::index");
@@ -34,7 +35,7 @@ $routes->group('estadousuario', function($routes){
     $routes->post("update", "EstadoUsuarioController::update");
 });
 
-$routes->group('usuario', function($routes){
+$routes->group('usuario',['filter' => 'sessionauth'], function($routes){
     $routes->get("/", "UsuarioController::index");
     $routes->get("show", "UsuarioController::index");
     $routes->get("edit/(:num)", "UsuarioController::singleUsuario/$1");
@@ -42,6 +43,7 @@ $routes->group('usuario', function($routes){
     $routes->post("add", "UsuarioController::create");
     $routes->post("update", "UsuarioController::update");
 });
+
 
 $routes->group('rol', function($routes){
     $routes->get("/", "RolController::index");
@@ -181,7 +183,8 @@ $routes->group('pqrs', function($routes){
     $routes->get("delete/(:num)", "PqrsController::delete/$1");
     $routes->post("add", "PqrsController::create");
     $routes->post("update", "PqrsController::update");
-
+    $routes->get("Cpqrs", "PqrsController::PqrsCliente");
+    
 
 });
 
@@ -254,6 +257,41 @@ $routes->group('ingresoproducto', function($routes){
 
 });
 
+$routes->post('usuario/login', 'UsuarioController::login');
+$routes->get('usuario/login', function() {
+    return view('usuario/login');
+});
+
+$routes->group('', ['filter' => 'auth'], function($routes) {
+    $routes->get('usuario', 'UsuarioController::index');
+    $routes->get('home', 'HomeController::index');
+});
+$routes->get('register', 'UsuarioController::registerView');
+$routes->post('producto/updateImage', 'ProductoController::updateImage');
+
+$routes->get('producto/ver/(:num)', 'ProductoController::ver/$1');
+
+$routes->get('categoria/(:num)', 'ProductoController::listarProductos/$1');
 
 
+$routes->group('oferta', function($routes) {
+    $routes->get("/", "OfertasController::index");
+    $routes->get("show", "OfertasController::index");
+    $routes->get("edit/(:num)", "OfertasController::singleOferta/$1");
+    $routes->get("delete/(:num)", "OfertasController::delete/$1");
+    $routes->post("add", "OfertasController::create");
+    $routes->post("update", "OfertasController::update");
+    $routes->post('updateImage', 'OfertasController::updateImage');
+});
 
+$routes->get('/logout', 'UsuarioController::logout');
+
+$routes->group('userapi', function($routes) {
+    $routes->get("/", "ApiUserController::index");
+    $routes->get("show", "ApiUserController::index");
+    $routes->get("edit/(:num)", "ApiUserController::singleUser/$1");
+    $routes->get("delete/(:num)", "ApiUserController::delete/$1");
+    $routes->post("add", "ApiUserController::create");
+    $routes->post("update", "ApiUserController::update");
+    $routes->post('updateImage', 'ApiUserController::updateImage');
+});
